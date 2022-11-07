@@ -1,0 +1,131 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.mouse-heart {
+    display: block;
+    position: absolute;
+    animation: fadeOut 1s linear;
+    z-index: 2;
+}
+
+.mouse-heart::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: url('heart.png');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.mouse-heart::before {
+
+    animation: heartMove 1s linear;
+}
+
+@keyframes fadeOut {
+    0%, 100% {
+        opacity: 0;
+    }
+    20%, 80% {
+        opacity: 1;
+    }
+}
+
+@keyframes heartMove {
+    from {
+
+    } to {
+        transform: translate(300px) rotate(360deg);
+    }
+}
+
+.container {
+    position: relative;;
+    width: 456px;
+    height: 400px;
+    overflow: hidden;
+}
+
+.outer-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('trans.png');
+    background-size: cover;
+    filter: brightness(0);
+    z-index: 12;
+}
+
+
+.heart { 
+    position: absolute; 
+    top: calc(50% - 8px);
+    left: calc(50% - 12px);
+    animation-iteration-count: infinite;
+}
+
+.heart div {
+    height: 100%;
+    background: url('heart.png');
+    background-size: cover;
+    transform: rotate(var(--inner-rotate));
+}
+
+@keyframes moveFast {
+    0% {
+        transform: rotate(var(--rotate)) translate(100px) scale(0.5);
+        opacity: 0;
+    }
+    50%{
+        transform: rotate(var(--rotate)) translate(190px) scale(0.8);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(var(--rotate)) translate(280px) scale(2);
+        filter: hue-rotate(calc(var(--rotate) * 2));
+        opacity: 0.4;
+    }
+}
+
+@keyframes moveSlow {
+    0% {
+        transform: rotate(var(--rotate)) translate(80px) scale(0.5);
+        opacity: 0;
+    }
+    60%{
+        transform: rotate(var(--rotate)) translate(120px) scale(0.6);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(var(--rotate)) translate(180px) scale(2);
+        filter: hue-rotate(calc(var(--rotate) * 2));
+        opacity: 0.4;
+    }
+}
+
+.inner-frame {
+    position: absolute;
+    height: 300px;
+    width: 343px;
+    background: url('inner_heart.png');
+    background-size: cover;
+    top: 54px;
+    left: 56px;
+    filter: brightness(0);
+    z-index: 10;
+}
